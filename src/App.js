@@ -1,25 +1,31 @@
-import logo from './logo.svg';
+import React, {useState} from 'react'
 import './App.css';
+import Timer from "./Components/Timer/Timer";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    // const [number, setNumber] = useState(0)
+    //
+    // const addNumber = ()=> {
+    //     if (number <= 10) {
+    //         setNumber( number + 1)
+    //     }
+    // }
+    //
+    // const deleteNumber = ()=> {
+    //     if (number > 0) {
+    //         setNumber( number - 1)
+    //     }
+    // }
+
+    return (
+        <div className="App">
+            {/*<button onClick={addNumber}>+</button>*/}
+            {/*<span>{number}</span>*/}
+            {/*<button onClick={deleteNumber}>-</button>*/}
+            <Timer />
+        </div>
+    );
 }
 
 export default App;

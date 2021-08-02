@@ -5,6 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url("https://www.zastavki.com/pictures/1920x1080/2011/Nature___Other_mountain_river_029632_23.jpg");
+  background-repeat: no-repeat;
 }
 
 code {
