@@ -10,12 +10,8 @@ const Timer = () => {
     const getMinutes = () => Math.floor((seconds - getHours() * 3600) / 60)
     const getSeconds = () =>  seconds - getHours() * 3600 - getMinutes() * 60
 
-    const subtract = () => {
-        setSeconds(seconds => seconds - 1)
-    }
-    const  handleClick =()=> {
-       setInterval(() => subtract() , 1000)
-    }
+    const subtract = () => setSeconds(seconds => seconds - 1);
+    const  handleClick =()=> setInterval(() => subtract() , 1000);
 
     return (
         <div className={className.content}>
@@ -30,7 +26,7 @@ const Timer = () => {
                 <div className={className.content__elements__hours}>
                     <h2>{getHours()}</h2>
                     <p>HOURS</p>
-                </div>add
+                </div>
                 <div className={className.content__elements__minutes}>
                     <h2>{getMinutes()}</h2>
                     <p>MINUTES</p>
