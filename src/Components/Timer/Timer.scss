@@ -40,14 +40,21 @@ p {
     border: solid 3px #ffd700;
 }
 
-.content__button {
+//.content__button {
+//    display: flex;
+//    flex-direction: column;
+//    align-items: center;
+//    justify-content: center;
+//    margin: 40px 0;
+//}
+
+.content__desc {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    margin: 40px 0;
 }
 
-.content__button div {
+.content__button {
     width: 250px;
     min-height: 250px;
     border-radius: 50%;
@@ -57,6 +64,14 @@ p {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.content__button__time__input {
+    display: flex;
+    p {
+        font-size: 75px;
+        margin: 0 5px;
+    }
 }
 
 .content__button button {
@@ -76,12 +91,25 @@ p {
 
 .content__button input {
     margin-top: 30px;
-    width: 142px;
+    width: 71px;
     min-height: 50px;
     border-radius: 7%;
-    border: solid 4px #000000;
     text-align: center;
     font-weight: 400;
     font-size: 46px;
     outline: none;
+}
+
+.content__button__time {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    input:disabled, button:disabled {
+        background-color: white;
+        opacity: .8;
+    }
+    input::placeholder {
+        font-size: 15px;
+    }
 }
