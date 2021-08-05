@@ -8,7 +8,7 @@ h2  {
 p {
     color: white;
     font-size: 25px;
-    margin: 15px 0;
+    margin: -5px 0 0 0;
 }
 
 .content__elements {
@@ -75,11 +75,8 @@ p {
 }
 
 .content__button button {
-    width: 90px;
-    min-height: 40px;
-    border-radius: 7%;
+    border-radius: 21%;
     font-size: 19px;
-    border: none;
 }
 
 .content__button button:hover {
@@ -115,4 +112,8 @@ p {
     input::placeholder {
         font-size: 15px;
     }
+}
+
+.buttons {
+    margin-top: 14px;
 }

@@ -4,9 +4,7 @@ import './Timer.scss';
 const Timer = () => {
     const [interval, funcInterval] = useState(0)
     const [inputDisabled, funcInputDisabled] = useState(false)
-
     const [seconds, setSeconds] = useState(0)
-
     const [hours, setHours] = useState('')
     const [minutes, setMinutes] = useState('')
 
@@ -19,6 +17,20 @@ const Timer = () => {
         const intervalId = setInterval(subtract, 1000)
         funcInterval(intervalId)
         funcInputDisabled(true)
+    }
+
+    const stop = () => {
+        clearInterval(interval)
+        funcInputDisabled(false)
+    }
+
+    const funcDelete = () => {
+        funcInterval(0)
+        funcInputDisabled(false)
+        setSeconds(0)
+        setHours('')
+        setMinutes('')
+        clearInterval(interval)
     }
 
     useEffect(() => {
@@ -66,7 +78,11 @@ const Timer = () => {
                             </div>
                         </div>
                         <p>TIME</p>
-                        <button onClick={handleClick} disabled={inputDisabled || !seconds}>START</button>
+                        <div className='buttons'>
+                            <button onClick={handleClick} disabled={inputDisabled || !seconds} ><img src="//im0-tub-ru.yandex.net/i?id=6e92a67040b44f349485085c490923bb&amp;n=13&amp;exp=1" alt="ply"/></button>
+                            <button onClick={stop} ><img src="//im0-tub-ru.yandex.net/i?id=b39943b512f671d243214f92a753711d&amp;n=13&amp;exp=1" alt="stop"/></button>
+                            <button onClick={funcDelete}><img src="https://www.testoitalia.live/wp-content/uploads/2020/03/xx.png" alt="delete"/></button>
+                        </div>
                     </div>
                 </div>
             </div>
