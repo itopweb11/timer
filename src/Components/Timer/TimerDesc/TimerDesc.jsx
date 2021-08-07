@@ -3,21 +3,40 @@ import '../Timer.scss';
 
 const TimerDesc = (props) => {
 
-    const getHours = () => Math.floor(props.seconds / 3600)
-    const getMinutes = () => Math.floor((props.seconds - getHours() * 3600) / 60)
-    const getSeconds = () => props.seconds - getHours() * 3600 - getMinutes() * 60
+    const [seconds, setSeconds] = useState(0)
+    const [interval, funcInterval] = useState(0)
+
+    const getHours = () => Math.floor(seconds / 3600)
+    const getMinutes = () => Math.floor((seconds - getHours() * 3600) / 60)
+    const getSeconds = () => seconds - getHours() * 3600 - getMinutes() * 60
+
+    const subtract = () => setSeconds(seconds => seconds - 1 === 0 ? 0 : seconds - 1);
+
+    const clearIntervals = () => {
+        clearInterval(interval)
+        funcInterval(0)
+    }
 
     useEffect(() => {
-        props.setSeconds(props.hours * 3600 + props.minutes * 60)
+        setSeconds(props.hours * 3600 + props.minutes * 60)
     }, [props.hours, props.minutes])
 
     useEffect(() => {
-        if (props.seconds === 0) clearInterval(props.interval)
-    }, [props.seconds, props.interval])
+        if (seconds === 0) clearIntervals()
+    }, [seconds, interval])
 
     useEffect(() => {
-        return () => clearInterval(props.interval)
+        return () => clearIntervals()
     }, [])
+
+    useEffect( () => {
+        if (props.active === 'play') {
+            const intervalId = setInterval(subtract, 1000)
+            funcInterval(intervalId)
+        }
+        if (props.active === 'delete') clearIntervals()
+        if (props.active === 'stop') clearIntervals()
+    },[props.active])
 
     return (
         <div className='content__elements'>

@@ -4,23 +4,17 @@ import '../Timer.scss';
 const TimerHeader = (props) => {
     const [inputDisabled, funcInputDisabled] = useState(false)
 
-    const stop = () => {
-        clearInterval(props.interval)
-        funcInputDisabled(false)
-    }
-    const subtract = () => props.setSeconds(seconds => seconds - 1 === 0 ? 0 : seconds - 1);
-    const handleClick = () => {
-        const intervalId = setInterval(subtract, 1000)
-        props.funcInterval(intervalId)
-        funcInputDisabled(true)
+    const changeActive = (active, disabled) => {
+        props.setActive(active)
+        funcInputDisabled(disabled)
     }
 
-    const funcDelete = () => {
-        props.funcInterval(0)
-        funcInputDisabled(false)
+    const handlePlay = () => changeActive('play', true)
+    const handleStop = () => changeActive('stop', false)
+    const handleDelete = () => {
+        changeActive('delete', false)
         props.setHours('')
         props.setMinutes('')
-        clearInterval(props.interval)
     }
 
     useEffect(() => {
@@ -55,9 +49,9 @@ const TimerHeader = (props) => {
                         </div>
                         <p>TIME</p>
                         <div className='buttons'>
-                            <button onClick={handleClick} disabled={inputDisabled} ><img src="//im0-tub-ru.yandex.net/i?id=6e92a67040b44f349485085c490923bb&amp;n=13&amp;exp=1" alt="ply"/></button>
-                            <button onClick={stop} ><img src="//im0-tub-ru.yandex.net/i?id=b39943b512f671d243214f92a753711d&amp;n=13&amp;exp=1" alt="stop"/></button>
-                            <button onClick={funcDelete}><img src="https://www.testoitalia.live/wp-content/uploads/2020/03/xx.png" alt="delete"/></button>
+                            <button onClick={handlePlay} disabled={inputDisabled} ><img src="//im0-tub-ru.yandex.net/i?id=6e92a67040b44f349485085c490923bb&amp;n=13&amp;exp=1" alt="ply"/></button>
+                            <button onClick={handleStop} ><img src="//im0-tub-ru.yandex.net/i?id=b39943b512f671d243214f92a753711d&amp;n=13&amp;exp=1" alt="stop"/></button>
+                            <button onClick={handleDelete}><img src="https://www.testoitalia.live/wp-content/uploads/2020/03/xx.png" alt="delete"/></button>
                         </div>
                     </div>
                 </div>
